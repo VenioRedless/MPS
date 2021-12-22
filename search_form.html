@@ -1,0 +1,26 @@
+{% extends "nlp/base.html" %}
+
+{% block content %}
+
+<h1>抽出条件</h1>
+<form action="/nlp/count_q/" method="POST">{% csrf_token %}
+    <p>
+        <h5>都市種類</h5>
+        <input type="checkbox" name="cate[]" value="東京">東京都
+        <input type="checkbox" name="cate[]" value="政令">政令指定都市
+        <input type="checkbox" name="cate[]" value="中核">中核都市
+    </p>
+    <p>
+        <h5>年度選択</h5>
+        開始年度(数字4桁e.g:2019)<input type="text" name="t_start">　〜　終了年度(数字4桁e.g:2021)<input type="text" name="t_end">
+    </p>
+    <input type="submit" value="抽出開始">
+
+<!-- キーワード<input type="text" name="q">
+<input type="text" name="q">
+<input type="text" name="q"> -->
+
+</form>
+
+
+{% endblock content %}

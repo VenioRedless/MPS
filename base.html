@@ -1,0 +1,53 @@
+{% load i18n static %}
+<!DOCTYPE html>{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style type="text/css">
+  table {
+  width: 100%;
+  table-layout: fixed;
+}
+  th.width80 {
+        width: 80%;
+  }
+    
+  th.width20 {
+      width: 20%;
+  }
+  th.width10 {
+        width: 10%;
+  }
+  th.width69 {
+        width: 69%;
+  }
+  th.width5 {
+        width: 5%;
+  }  
+  th.width8 {
+        width: 5%;
+  }  
+    
+    
+table td {
+  /*word-break: break-all;*/
+  overflow-wrap : break-word;
+}
+</style>
+<link rel="stylesheet" href="{% static 'nlp/css/bootstrap.min.css' %}">
+
+{% block extra_css %}{% endblock %}
+<title>{% block title %}My TEXT{% endblock %}</title>
+</head>
+<body>
+  <div class="container">
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
+<script src="{% static 'nlp/js/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'nlp/js/bootstrap.bundle.min.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

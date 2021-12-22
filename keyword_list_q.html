@@ -1,0 +1,23 @@
+{% extends "nlp/base.html" %}
+
+{% block title %}文章の一覧{% endblock title %}
+
+{% block content %}
+    <h4 class="mt-4 border-bottom">文章一覧</h4>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th class="width80" scope="col">キーワード</th>
+          <th class="width20" scope="col">出現回数</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for keyword in keyword_array %}
+        <tr>
+          <td scope="row"><a href="http://127.0.0.1:8000/nlp/search_cate/?q={{ keyword.0 }}{% for c in cate %}&cate={{ c }}{% endfor %}&t_start={{ t_start }}&t_end={{ t_end }}">{{ keyword.0  }}</a></td>
+          <td>{{ keyword.1 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}

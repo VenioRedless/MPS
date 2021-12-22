@@ -1,0 +1,96 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'nlp/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'nlp/css/font-awesome.min.css' %}">
+    <script src="{% static 'nlp/js/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'nlp/js/bootstrap.bundle.min.js' %}"></script>
+    <title>まちづくりマスタープラテキストデータアップロード</title>
+    <style>
+        body {
+            background-color: #eee;
+        }
+        .box1 {
+            padding: 0.5em 0.5em;
+            margin: 1em 0;
+            font-weight: bold;
+            border: solid 3px #999595;
+        }
+        .box1 p {
+            margin: 0; 
+            padding: 0;
+        }
+        .box2 {
+            padding: 0.5em 0.5em;
+            margin: 1em 0;
+            color: #fbfbff;
+            background: #a8a5a5;/*背景色*/
+        }
+        .box2 p {
+            margin: 0; 
+            padding: 0;
+        }
+        .box3 {
+            padding: 0.5em 1em;
+            margin: 0 0;
+            color: #2c2c2f;
+            background: #cde4ff;/*背景色*/
+        }
+        .box3 p {
+            margin: 0; 
+            padding: 0;
+        }
+        p.red { color: #e93939; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6" style="margin-top: 20px">
+                <div class="box3"><h3 class="text-left">ファイルアップロード</h3></div>
+                <div class="box1">
+                <table>
+                    <tr>
+                        <td valign="top"> 
+                            <h4>zipファイルをupload：</h4>
+                        </td>
+                        <td>
+                            <form class="form-inline" action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group" style="width:200px;">
+                                    <div class="input-group">
+                                        <input type="file" id="file_input" name="file" style="display: none;">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" onclick="$('#file_input').click();"><i class="glyphicon glyphicon-folder-open"></i></button>
+                                        </span>
+                                        <div class="input-group">
+                                            <input id="dummy_file" type="text" class="form-control" placeholder="select file..." disabled>       
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" name="button" class="btn btn-primary">upload</button>
+                            </form>
+                            <script type="text/javascript">
+                                $(function(){
+                                $('#file_input').change(function() {
+                                    $('#dummy_file').val($(this).val());
+                                });
+                                })
+                            </script>
+                        </td>
+                    </tr>
+                </table>
+                    <p>マスタープランのテキストデータをサーバーにuploadする</p>
+                    <p class="red">※uploadするファイルは、すべてのテキストデータが入ったzipファイルです</p>
+                    <p class="red">※ファイルサイズが大きい場合は、uploadに時間がかかる場合がありますので、「upload完了」の画面が表示されるまでほかの操作をしないでください</p>
+                </div>
+                <div><h4 class="text-center"><a href="/nlp/">前に戻る</a></h4></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

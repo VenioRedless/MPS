@@ -1,0 +1,34 @@
+{% extends "nlp/base.html" %}
+
+{% block content %}
+
+<h1>抽出条件</h1>
+<form action="/nlp/search_city/" method="POST">{% csrf_token %}
+    <p><h3>都市名を選択してください：</h3>
+        <table>
+        <thead>
+        </thead>
+        <tbody>
+          {% for city in citys %}
+
+            <td scope="row"><input type="checkbox" name="city_name[]" value="{{ city }}">{{ city }}</a></td>
+          {% endfor %}
+        </tbody>
+      </table>
+    </p>
+
+    
+    <p>
+        <h3>年度選択</h3>
+        開始年度(数字4桁e.g:2019)<input type="text" name="t_start">　〜　終了年度(数字4桁e.g:2021)<input type="text" name="t_end">
+    </p>
+    <input type="submit" value="抽出開始">
+
+<!-- キーワード<input type="text" name="q">
+<input type="text" name="q">
+<input type="text" name="q"> -->
+
+</form>
+
+
+{% endblock content %}
